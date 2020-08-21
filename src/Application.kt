@@ -1,3 +1,5 @@
+import kotlin.random.Random
+
 /**
  * 一个十分简单的希尔排序(shell排序)
  */
@@ -37,7 +39,18 @@ fun shell(list: MutableList<Int>): MutableList<Int> {
 }
 
 fun main() {
-    val datas = mutableListOf<Int>(32, 322, 12, 4, 5, 6, 12, 1, 2, 3, 67, 9)
-    println(datas)
-    println(shell(datas))
+    val data = mutableListOf<Int>(32, 322, 12, 4, 5, 6, 12, 1, 2, 3, 67, 9)
+    println(data)
+    println(shell(data))
+
+    val random = Random(0)
+    data.clear()
+    val DATA_LENGTH = 100_0000
+    for (c in 0..DATA_LENGTH) {
+        data.add(random.nextInt())
+    }
+    val startTime = System.currentTimeMillis()
+    shell(data)
+    val endTime = System.currentTimeMillis()
+    println("Sort $DATA_LENGTH integers in ${(endTime - startTime)/1000.0}s")
 }
